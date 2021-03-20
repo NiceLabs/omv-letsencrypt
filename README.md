@@ -4,18 +4,19 @@
 
 ```bash
 # initial configuration
-git clone https://github.com/NiceLabs/omv-letsencrypt /opt/letsencrypt
+wget -O - https://git.io/JmyB7 | tar zxv
+mv omv-letsencrypt-master /opt/letsencrypt
 cd /opt/letsencrypt
 echo "your domain" > CNAME
 echo "dns_gandi_api_key=your api key" > credentials.ini
 chmod 400 credentials.ini
-# deploy
+# deploy certbot
 ./deploy.sh
 # issue certificate
 ./issue.sh
 # import certificate
 ./hook.py
-# add scheduled job
+# add to scheduled job
 ./add-cron.py
 ```
 

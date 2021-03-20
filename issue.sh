@@ -1,11 +1,10 @@
 #!/bin/bash
+# shellcheck disable=SC1091
+source .venv/bin/activate
 set -x
-.venv/bin/certbot \
-	certonly \
-	--agree-tos \
-	--register-unsafely-without-email \
-	--authenticator dns-gandi \
-	--dns-gandi-credentials "credentials.ini" \
-	--server "https://acme-v02.api.letsencrypt.org/directory" \
-	--domain "$(cat CNAME)" \
-	--domain "*.$(cat CNAME)"
+NAME="$(cat CNAME)"
+certbot certonly \
+  --config "cli.ini" \
+  --cert-name "$NAME" \
+  --domain "$NAME" \
+  --domain "*.$NAME"

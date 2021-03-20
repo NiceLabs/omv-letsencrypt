@@ -1,6 +1,9 @@
 #!/bin/env python3
 import json
+import os
 from subprocess import check_output, run
+
+base_path = "/etc/letsencrypt/live"
 
 
 def rpc(service, method, params):
@@ -31,8 +34,8 @@ def get_name():
 
 def main():
     name = get_name()
-    full_chain = "/etc/letsencrypt/live/%s/fullchain.pem" % name
-    private_key = "/etc/letsencrypt/live/%s/privkey.pem" % name
+    full_chain = os.path.join(base_path, name, "fullchain.pem")
+    private_key = os.path.join(base_path, name, "privkey.pem")
     certificate = get_certificate(name)
     with open(full_chain, "r") as fp:
         certificate["certificate"] = fp.read()
