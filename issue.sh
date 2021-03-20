@@ -6,4 +6,6 @@ set -x
 	--register-unsafely-without-email \
 	--authenticator dns-gandi \
 	--dns-gandi-credentials "credentials.ini" \
-	--domain "$(cat CNAME)"
+	--server "https://acme-v02.api.letsencrypt.org/directory" \
+	--domain "$(cat CNAME)" \
+	--domain "*.$(cat CNAME)"
