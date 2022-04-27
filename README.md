@@ -3,10 +3,11 @@
 ## Usage
 
 ```bash
-# initial configuration
-wget -O - https://git.io/JmyB7 | tar zxv
+# download tarbell
+wget -O - aka.pw/omv-letsencrypt-tarbell | tar zxv
 mv omv-letsencrypt-master /opt/letsencrypt
 cd /opt/letsencrypt
+# initial configuration
 echo "your domain" > CNAME
 echo "dns_gandi_api_key=your api key" > credentials.ini
 chmod 400 credentials.ini
